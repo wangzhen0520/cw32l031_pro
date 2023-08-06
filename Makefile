@@ -101,7 +101,7 @@ LDFLAGS = $(MCU) -T$(LDSCRIPT) $(LIBDIR) $(LIBS) -Wl,-Map=$(BUILD_DIR)/$(TARGET)
 -Wl,--gc-sections -ffunction-sections --specs=nano.specs --specs=nosys.specs $(LTO) 
 
 # default action: build all
-all: test_pr $(EXEC_DIR)/$(TARGET).elf $(EXEC_DIR)/$(TARGET).hex $(EXEC_DIR)/$(TARGET).bin POST_BUILD
+all: $(EXEC_DIR)/$(TARGET).elf $(EXEC_DIR)/$(TARGET).hex $(EXEC_DIR)/$(TARGET).bin POST_BUILD
 
 #######################################
 # build the application
@@ -138,9 +138,6 @@ $(BUILD_DIR):
 
 $(EXEC_DIR):
 	@mkdir $@
-
-test_pr:
-	@echo "$(C_SOURCES)"
 
 .PHONY: POST_BUILD
 POST_BUILD: $(EXEC_DIR)/$(TARGET).elf

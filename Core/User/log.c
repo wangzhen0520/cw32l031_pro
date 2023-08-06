@@ -8,7 +8,6 @@
 #include "cw32l031_rcc.h"
 #include "cw32l031_uart.h"
 
-
 /******************************************************************************
  * Local pre-processor symbols/macros ('#define')
  ******************************************************************************/
@@ -82,17 +81,14 @@ static void SerialInit(uint32_t BaudRate)
     USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
     USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
 
-
     USART_Init(CW_UART1, &USART_InitStructure);
-
 }
 
 static void SerialSend(uint8_t Data)
 {
-
     USART_SendData_8bit(CW_UART1, Data);
-    while (USART_GetFlagStatus(CW_UART1, USART_FLAG_TXE) == RESET);
-
+    while (USART_GetFlagStatus(CW_UART1, USART_FLAG_TXE) == RESET) {
+    }
 }
 
 int fputc(int ch, FILE *f)
@@ -101,8 +97,8 @@ int fputc(int ch, FILE *f)
     return ch;
 }
 
-size_t __write(int handle, const unsigned char * buffer, size_t size)
-{   
+int _write(int fd, char *buffer, int size)
+{
     size_t nChars = 0;
 
     if (buffer == 0)
@@ -124,7 +120,6 @@ size_t __write(int handle, const unsigned char * buffer, size_t size)
 
     return nChars;
 }
-
 
 /******************************************************************************
  * EOF (not truncated)

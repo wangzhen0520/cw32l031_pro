@@ -17,8 +17,8 @@ static inline void LED_Init()
 
 int main(void)
 {
-    LED_Init();
     LogInit();
+    LED_Init();
 
     InitTick(24000000ul); // 初始化SysTick
 
