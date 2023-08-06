@@ -17,10 +17,10 @@ static inline void LED_Init()
 
 int main(void)
 {
+    InitTick(8000000ul); // 初始化SysTick
+
     LogInit();
     LED_Init();
-
-    InitTick(24000000ul); // 初始化SysTick
 
     // 开启两线调试接口
     RCC_SWDIO_Config(RCC_SYSCTRL_SWDIOEN);
