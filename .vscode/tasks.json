@@ -1,0 +1,32 @@
+{
+	"version": "2.0.0",
+	//一个tasks中包含着三个小task
+	"tasks": [
+		{
+			"label": "flash", //task名称
+			"command": "mingw32-make", //task命令
+			//调用命令时传递的参数
+			"args": [
+				"flash"
+			]
+		},
+		{
+			"label": "make", //task名称
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"command": "mingw32-make", //task命令
+			"args": [] //参数：无
+		},
+		{
+			"label": "Build", //task名称，和launch中preLaunchTask一样
+			"dependsOrder": "sequence", //按列出的顺序执行任务依赖项
+			//依赖项
+			"dependsOn": [
+				"make",
+				"flash"
+			]
+		}
+	]
+}

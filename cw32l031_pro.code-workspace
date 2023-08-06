@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"app_main.h": "c",
+			"user_uart.h": "c",
+			"core_cm0plus.h": "c",
+			"cmsis_compiler.h": "c",
+			"cw32l031_gpio.h": "c",
+			"system_cw32l031.h": "c"
+		}
+	}
+}
